@@ -8,7 +8,7 @@ client = TestClient(app)
 @pytest.mark.parametrize("route, expected_response", [
         ("/", {"message": "Hello, World!"}),
         ("/hello", {"message": "hello , from the hello route"}),
-        ("/jenkins", {"message": "hello , from jenkins"})
+        ("/jenkins", {"message": "hello , jenkins this side"})
         ])
 def test_all_routes(route, expected_response):
         response = client.get(route)

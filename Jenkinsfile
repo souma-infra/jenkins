@@ -8,6 +8,7 @@ pipeline{
 		stage('Build'){
 			steps {
 				echo "Building application ${env.APP_NAME}"
+				echo "installing dependencies from requirements.txt"
 				sh 'pip3 install -r requirements.txt'
 			}
 		}
@@ -15,6 +16,18 @@ pipeline{
 			steps {
 				echo "Testing the application ${env.APP_NAME}"
 				sh 'pytest testing.py --junitxml=results.xml'
+			}
+		}
+		stage('Approval'){
+			steps {
+				echo "waiting for the approval to deploy the application ${env.APP_NAME}"
+				input message: "Do you want to deploy the ${env.APP_NAME} app to production ?"
+			}
+		}
+		stage('Deploy'){
+			steps{
+				echo "Deploying the application ${env.APP_NAME} to production"
+				sh 'echo "Deploying the application to production"'
 			}
 		}
 	}
@@ -30,5 +43,4 @@ pipeline{
             		echo "Build ${BUILD_TAG_CUSTOM} failed. Check the Test stage output above."
         	}
     	}
-
 }
