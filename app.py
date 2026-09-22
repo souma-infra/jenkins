@@ -8,7 +8,7 @@ def hello():
 
 @app.get("/jenkins")
 def jenkins():
-    return {"message" : "hello , from jenkins"}
+    return {"message" : "hello , jenkins this side" }
 
 
 @app.get("/")
