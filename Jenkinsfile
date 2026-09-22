@@ -2,6 +2,7 @@ pipeline{
 	agent any 
 	environment {
 		APP_NAME = "jenkins-app-demo"
+		BUILD_TAG_CUSTOM = "jenkins-app-demo-${env.BUILD_NUMBER}"
 	}
 	stages {
 		stage('Build'){
