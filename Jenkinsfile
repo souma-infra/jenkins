@@ -38,9 +38,11 @@ pipeline{
         	}
         	success {
             		echo "Build ${BUILD_TAG_CUSTOM} succeeded."
+					echo "Deploy successful for the application ${env.APP_NAME} to production environment."
        	        }
         	failure {
             		echo "Build ${BUILD_TAG_CUSTOM} failed. Check the Test stage output above."
+					echo "Deployment was not successful for the application ${env.APP_NAME} to production environment."
         	}
     	}
 }
